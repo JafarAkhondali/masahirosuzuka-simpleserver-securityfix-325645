@@ -4,11 +4,12 @@ var path = require('path');
 var fs = require('fs');
 
 http.createServer(function(req, res) {
-  var uri = url.parse(req.url).pathname;
+  var webroot = 'www';
+  var uri = webroot + url.parse(req.url).pathname;
   var fileName = path.join(process.cwd(), uri);
 
-  if (uri == '/') {
-    fileName = path.join(process.cwd(), '/index.html');
+  if (uri == 'www/') {
+    fileName = path.join(process.cwd(), 'www/index.html');
   }
 
   fs.readFile(fileName, function(err, file) {
